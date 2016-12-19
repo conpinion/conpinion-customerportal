@@ -1,0 +1,27 @@
+.version-history {
+}
+
+.version-history-item {
+  .fa-eye {
+    margin-left: 1em;
+  }
+  border-bottom: 1px dotted rgba(200, 200, 200, 0.2);
+  &:first-child {
+    border-top: 1px dotted rgba(200, 200, 200, 0.2);
+  }
+}
+
+.version-created-at {
+  display: inline-block;
+  width: 40%;
+}
+
+.version-created-by {
+  display: inline-block;
+  width: 20%;
+}
+
+.version-actions {
+  display: inline-block;
+  min-width: 10%;
+}

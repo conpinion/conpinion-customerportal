@@ -1,0 +1,18 @@
+<tr>
+  <td class="actions">
+    <%= action_to t('actions.show'), 'eye', product, color: 'success' %>
+    <%= action_to t('actions.downloads'), 'cloud-download', product_downloads_path(product),
+        color: 'info' %>
+    <% if can? :edit, product %>
+      <%= action_to t('actions.edit'), 'pencil', edit_product_path(product) %>
+    <% end %>
+    <% if can? :destroy, product %>
+      <%= action_to t('actions.delete'), 'times', product,
+          color: 'danger',
+          method: :delete,
+          data: { confirm: t('messages.delete_confirmation', model: Product.model_name.human) } %>
+    <% end %>
+  </td>
+  <td><%= product.name %></td>
+  <td><%= product.version %></td>
+</tr>

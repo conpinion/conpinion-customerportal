@@ -1,0 +1,19 @@
+<tr>
+  <td class="actions">
+    <%= action_to t('actions.show'), 'eye', [@product, download], color: 'success' %>
+    <%= action_to t('actions.download'), 'download', download_product_download_path(@product, download),
+        id: :download_button, color: 'info', target:  '_blank' %>
+    <% if can? :edit, download %>
+      <%= action_to t('actions.edit'), 'pencil', edit_product_download_path(@product, download) %>
+    <% end %>
+    <% if can? :destroy, download %>
+      <%= action_to t('actions.delete'), 'times', [@product, download],
+          color: 'danger',
+          method: :delete,
+          data: { confirm: t('messages.delete_confirmation', model: Download.model_name.human) } %>
+    <% end %>
+  </td>
+  <td><%= download.name %></td>
+  <td><%= number_to_human_size download.file_file_size %></td>
+  <td><%= number_to_human download.download_count %></td>
+</tr>

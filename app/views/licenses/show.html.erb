@@ -1,0 +1,85 @@
+<div class="col-md-8 col-md-offset-2">
+  <div>
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active">
+        <a href="#license" aria-controls="license" role="tab" data-toggle="tab">
+          <%= t 'views.licenses.license_tab' %>
+        </a>
+      </li>
+      <li role="presentation">
+        <a href="#versions" aria-controls="versions" role="tab" data-toggle="tab">
+          <%= t 'views.licenses.versions_tab' %>
+        </a>
+      </li>
+      <li role="presentation">
+        <a href="#file" aria-controls="file" role="tab" data-toggle="tab">
+          <%= t 'views.licenses.file_tab' %>
+        </a>
+      </li>
+    </ul>
+
+    <div class="tab-content well">
+      <div role="tabpanel" class="tab-pane active" id="license">
+        <p>
+          <strong><%= t 'activerecord.attributes.license.product' %>:</strong>
+          <%= @license.product.name %>
+        </p>
+        <p>
+          <strong><%= t 'activerecord.attributes.product.version' %>:</strong>
+          <%= @license.product.version %>
+        </p>
+        <p>
+          <strong><%= t 'activerecord.attributes.license.valid_until' %>:</strong>
+          <%= format_validity_date @license.valid_until %>
+        </p>
+        <p>
+          <strong><%= t 'activerecord.attributes.license.serial_number' %>:</strong>
+          <%= @license.serial_number %>
+        </p>
+        <p>
+          <strong><%= t 'activerecord.attributes.license.machine_code' %>:</strong>
+          <%= @license.machine_code %>
+        </p>
+        <p>
+          <strong><%= t 'activerecord.attributes.license.features' %>:</strong>
+        <pre class="file-contents"><%= JSON.pretty_generate @license.features %></pre>
+        </p>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="versions">
+        <% if @license.versions.present? %>
+          <p>
+            <strong><%= t('activerecord.attributes.global.updated_at') %>:</strong>
+            <%= @license.updated_at %>
+          </p>
+
+          <p>
+            <strong><%= t('activerecord.attributes.global.updated_by') %>:</strong>
+            <%= paper_trail_author @license %>
+          </p>
+
+          <p>
+            <strong><%= t('activerecord.attributes.global.version_history') %>:</strong>
+          </p>
+          <ol class="version-history" reversed>
+            <%= render @license.versions.reverse %>
+          </ol>
+        <% end %>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="file">
+        <pre class="file-contents"><%= render template: 'licenses/download.text' %></pre>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <% if can? :edit, @license %>
+      <%= link_to t('actions.edit'), edit_customer_license_path(@customer, @license), class: 'btn btn-primary' %>
+    <% end %>
+    <%= link_to t('actions.download'), download_customer_license_path(@customer, @license), class: 'btn btn-success' %>
+    <% if can? :restore, @license %>
+      <%= restore_link_to restore_customer_license_path(@customer, @license,
+          version: @license.version.index) if @license.version %>
+      <%= link_to_back %>
+    <% end %>
+  </div>
+</div>

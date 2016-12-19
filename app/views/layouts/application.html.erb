@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= Figaro.env.app_name %></title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <meta name="x-cable-url" content="<%= Figaro.env.cable_url %>">
+  <meta name="x-simplewebrtc-url" content="<%= Figaro.env.simplewebrtc_url %>">
+</head>
+
+<body class="<%= "#{controller_name}_view #{action_name}_action" %>">
+  <%= render 'layouts/main_navigation' %>
+  <%= render 'toastr_rails/flash' %>
+  <%= render_breadcrumbs partial: 'layouts/breadcrumbs' %>
+  <% if content_for?(:body) %>
+    <%= yield(:body) %>
+  <% else %>
+    <%= yield %>
+  <% end %>
+</body>
+</html>

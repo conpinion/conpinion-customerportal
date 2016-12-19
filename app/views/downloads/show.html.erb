@@ -1,0 +1,27 @@
+<div class="col-md-6 col-md-offset-3">
+  <div class="well">
+    <p>
+      <strong><%= t('activerecord.attributes.download.name') %>:</strong>
+      <%= @download.name %>
+    </p>
+    <p>
+      <strong><%= t('activerecord.attributes.download.description') %>:</strong>
+      <%= @download.description %>
+    </p>
+    <p>
+      <strong><%= t('activerecord.attributes.download.file') %>:</strong>
+      <%= @download.file_file_name %>
+    </p>
+    <p>
+      <strong><%= t('activerecord.attributes.download.size') %>:</strong>
+      <%= number_to_human_size @download.file_file_size %>
+    </p>
+  </div>
+
+  <div>
+    <% if can? :manage, @download %>
+      <%= link_to t('actions.edit'), edit_product_download_path(@product, @download), class: 'btn btn-primary' %>
+    <% end %>
+    <%= link_to_back %>
+  </div>
+</div>

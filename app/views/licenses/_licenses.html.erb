@@ -1,0 +1,29 @@
+<div id="customers-table">
+  <%= paginated @licenses %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="width-10"><%= t 'views.actions' %></th>
+        <th class="width-25">
+          <%= sort_link @q, :product_name, t('activerecord.attributes.license.product') %>
+        </th>
+        <th class="width-5">
+          <%= sort_link @q, :product_version, t('activerecord.attributes.product.version') %>
+        </th>
+        <th class="width-25">
+          <%= sort_link @q, :machine_code, t('activerecord.attributes.license.machine_code') %>
+        </th>
+        <th class="width-25">
+          <%= sort_link @q, :serial_number, t('activerecord.attributes.license.serial_number') %>
+        </th>
+        <th class="width-10">
+          <%= sort_link @q, :valid_until, t('activerecord.attributes.license.valid_until') %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @licenses %>
+    </tbody>
+  </table>
+  <%= paginated @licenses %>
+</div>

@@ -1,0 +1,14 @@
+<div class="table-actions">
+  <% if can? :create, LicensePool %>
+    <%= awesome_link_to t('actions.new_model', model: LicensePool.model_name.human),
+        'plus-square', new_license_pool_path, class: 'btn btn-sm btn-primary' %>
+  <% end %>
+  <%= search_form_for @q, remote: true, class: 'form-inline' do |f| %>
+    <%= search_form_field f, :distributor_company_cont, t('activerecord.attributes.license_pool.distributor') %>
+    <%= search_form_field f, :product_name_cont, t('activerecord.attributes.license_pool.product') %>
+    <%= search_form_field f, :feature_name_cont, t('activerecord.attributes.license_pool.feature_name') %>
+    <%= search_form_buttons %>
+  <% end %>
+</div>
+
+<%= render 'license_pools' %>

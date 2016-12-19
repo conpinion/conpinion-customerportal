@@ -1,0 +1,60 @@
+# Session timeout in minutes
+# Activity timeout in minutes
+# Paperclip storage quota in MB
+# The signing keys below are only for development and testing
+# Don't use the signing keys in production. Create your own keys!
+
+session_timeout: "60"
+online_timeout: "60"
+cable_url: "wss://localhost:3000/cable"
+cable_allowed_origins: |
+  https://localhost:3000
+  https://127.0.0.1:3000
+simplewebrtc_url: "https://sandbox.simplewebrtc.com:443/"
+force_ssl: "true"
+app_name: "conpinion customerportal"
+mailer_smtp_address: "smtp.exmaple.com"
+mailer_smtp_port: "587"
+mailer_smtp_domain: "example.com"
+mailer_smtp_user_name: ""
+mailer_smtp_password: ""
+mailer_host: "mail.example.com"
+mailer_from: "no-reply@example.com"
+paperclip_storage_qouta: "10240"
+license_signkey_priv: |
+  -----BEGIN DSA PRIVATE KEY-----
+  MIIBuwIBAAKBgQDZ8nuHrLBph23VNB5d9keQVBUS8Mb7dH1bQlFjXn1B+B3P0zkF
+  fnUJdC/wNzaxzKxd03D077JkYo3f+V/5vuGzEXY5Vh8h6i5FUcXu3cE95Q62Wpsx
+  k0f+/s4FMyAE1c1PHnDveVEsKKNqiTb9Do+ghvCVKNrBqPmmB//SStxvxwIVAPX7
+  s7gCY8rpHtqQsl87PMkRNJi1AoGAeuusqo/TMZjvo90EaMAdJXeBjywnzKkcLr33
+  f+TXsYcJCxhw50kWOLXwAbqLSx8LXAu02VuGqCO5xC2z3HufzBDr8c4sIIJLoC+c
+  c3LIT77Ga78uo656KsOtWIBYOGMK3qTjWpejGAV0TSQPjD8ip7bGVkn77DtsZ5W4
+  XpBmskgCgYBdd+u65nn0+7JGN3bphTTgrqJCOxLZlDRyDt2m2AsAkCsboO8f61Bh
+  Zyj6HV+34d9QSUfcZPJU1e1WZi1k39eWLj2x4VQyIStKCqBL8/UebG/GOYXq/pS2
+  IOItfHH9TU8HqhhzErn1deFHY9Gf0F68pNBcmtd1/svF0zCrZLSK2wIVAJyqBLaD
+  AzbCG83/sE+7zvNTuy70
+  -----END DSA PRIVATE KEY-----
+license_signkey_pub: |
+  -----BEGIN DSA PUBLIC KEY-----
+  AAAAB3NzaC1kc3MAAACBANnye4essGmHbdU0Hl32R5BUFRLwxvt0fVtCUWNefUH4Hc
+  /TOQV+dQl0L/A3NrHMrF3TcPTvsmRijd/5X/m+4bMRdjlWHyHqLkVRxe7dwT3lDrZa
+  mzGTR/7+zgUzIATVzU8ecO95USwoo2qJNv0Oj6CG8JUo2sGo+aYH/9JK3G/HAAAAFQ
+  D1+7O4AmPK6R7akLJfOzzJETSYtQAAAIB666yqj9MxmO+j3QRowB0ld4GPLCfMqRwu
+  vfd/5NexhwkLGHDnSRY4tfABuotLHwtcC7TZW4aoI7nELbPce5/MEOvxziwggkugL5
+  xzcshPvsZrvy6jrnoqw61YgFg4YwrepONal6MYBXRNJA+MPyKntsZWSfvsO2xnlbhe
+  kGaySAAAAIBdd+u65nn0+7JGN3bphTTgrqJCOxLZlDRyDt2m2AsAkCsboO8f61BhZy
+  j6HV+34d9QSUfcZPJU1e1WZi1k39eWLj2x4VQyIStKCqBL8/UebG/GOYXq/pS2IOIt
+  fHH9TU8HqhhzErn1deFHY9Gf0F68pNBcmtd1/svF0zCrZLSK2w==
+  -----END DSA PUBLIC KEY-----
+
+development:
+
+test:
+  online_timeout: "5"
+  cable_url: "ws://127.0.0.1:3001/cable"
+  force_ssl: "false"
+  cable_allowed_origins: |
+    http://localhost:3001
+    http://127.0.0.1:3001
+
+production:

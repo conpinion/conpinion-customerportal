@@ -1,0 +1,32 @@
+<%= semantic_form_for [@customer, @license], validate: true do |f| %>
+  <%= f.semantic_errors *f.object.errors.keys %>
+
+  <h2 class="text-primary"><%= t 'activerecord.models.license.one' %></h2>
+  <%= f.inputs do %>
+    <% if @license.persisted? %>
+      <%= f.input :product, as: :string, input_html: { readonly: true } %>
+      <%= f.input :serial_number, input_html: { readonly: true } %>
+      <%= f.input :machine_code, input_html: { readonly: true } %>
+    <% else %>
+      <%= f.input :product, collection: case
+        when current_user.has_role?(:admin)
+          Product.all
+        when current_user.has_role?(:distributor)
+          Distributor.find_by(responsible: current_user).products
+        else
+          Product.none
+      end
+      %>
+      <%= f.input :machine_code %>
+    <% end %>
+    <%= f.input :valid_until, as: :date_picker, input_html: { autofocus: true },
+        start_year: Time.now.year, end_year: Time.now.year + 100 %>
+    <%= render 'license_features' %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, button_html: { class: 'btn btn-primary' } %>
+    <%= f.action :cancel, label: t('actions.cancel'),
+        url: customer_licenses_path(@customer), button_html: { class: 'btn btn-default' } %>
+  <% end %>
+<% end %>

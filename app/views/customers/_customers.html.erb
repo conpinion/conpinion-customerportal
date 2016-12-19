@@ -1,0 +1,28 @@
+<div id="customers-table">
+  <%= paginated @customers %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="width-10"><%= t 'views.actions' %></th>
+        <% if current_user.has_role? :admin %>
+          <th class="width-20">
+            <%= sort_link @q, :distributor_company, Customer.human_attribute_name(:distributor) %>
+          </th>
+        <% end %>
+        <th class="<%= current_user.has_role? :admin ? 'width-25' : 'width-35' %>">
+          <%= sort_link @q, :company, Customer.human_attribute_name(:company) %>
+        </th>
+        <th class="<%= current_user.has_role? :admin ? 'width-25' : 'width-35' %>">
+          <%= sort_link @q, :name, Customer.human_attribute_name(:name) %>
+        </th>
+        <th class="width-20">
+          <%= t('activerecord.attributes.address.short') %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @customers %>
+    </tbody>
+  </table>
+  <%= paginated @customers %>
+</div>

@@ -1,0 +1,17 @@
+mailcatcher:
+  image: "schickling/mailcatcher"
+  ports:
+    - "1080:1080"
+
+rails:
+  build: "docker"
+  volumes:
+    - ".:/app"
+    - "$PWD/docker/conpinion-customerportal.cer:/etc/ssl/conpinion-customerportal.cer"
+    - "$PWD/docker/conpinion-customerportal.key:/etc/ssl/conpinion-customerportal.key"
+  links:
+    - "mailcatcher"
+  ports:
+    - "3000:3000"
+  environment:
+    - "RAILS_ENV=development"

@@ -1,0 +1,25 @@
+<div id="distributors-table">
+  <%= paginated @distributors%>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="width-10">
+          <%= t 'views.actions' %>
+        </th>
+        <th class="width-30">
+          <%= sort_link @q, :company, Distributor.human_attribute_name(:company) %>
+        </th>
+        <th class="width-30">
+          <%= t('activerecord.attributes.address.short') %>
+        </th>
+        <th class="width-30">
+          <%= sort_link @q, :responsible_family_name, t('activerecord.attributes.distributor.responsible') %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @distributors %>
+    </tbody>
+  </table>
+  <%= paginated @distributors %>
+</div>

@@ -1,0 +1,32 @@
+form.form-inline {
+  label {
+    margin-right: 1em;
+  }
+}
+
+.date_select.input {
+  width: 50%;
+}
+
+.date_picker {
+  width: 25%;
+}
+
+.file-contents {
+  background: #151515;
+  border: #151515;
+  color: $text-color;
+}
+
+.bootstrap-switch {
+  margin-left: -1.2em;
+  margin-right: 1em;
+}
+
+.input-group-addon {
+  background-color: darken($input-bg, 15%) !important;
+}
+
+form .checkbox label {
+  font-weight: bold;
+}

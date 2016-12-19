@@ -1,0 +1,208 @@
+en:
+  actions:
+    back: "Back"
+    call: "Call"
+    cancel: "Cancel"
+    confirm: "Yes"
+    delete: "Delete"
+    download: "Download"
+    downloads: "Downloads"
+    edit: "Edit"
+    edit_model: "Edit %{model}"
+    logout: "Logout"
+    new: "New"
+    new_model: "New %{model}"
+    restore: "Restore"
+    show: "Show"
+    view: "View"
+  activerecord:
+    attributes:
+      global:
+        version: "Version"
+        version_history: "Version history"
+        current_version: "Current version"
+        created_at: "Created at"
+        updated_at: "Updated at"
+        updated_by: "Updated by"
+      address:
+        short: "Address"
+        long: "Address"
+      customer:
+        address_street: "Street"
+        address_zip_code: "ZIP Code"
+        address_city: "City"
+        address_country: "Country"
+        company: "Company"
+        distributor: "Distributor"
+        name: "Name"
+      distributor:
+        address_street: "Street"
+        address_zip_code: "ZIP Code"
+        address_city: "City"
+        address_country: "Country"
+        company: "Company"
+        responsible: "Responsible"
+      download:
+        current_file: "Current file"
+        description: "Description"
+        download_count: "Number of Downloads"
+        file: "File"
+        name: "Name"
+        size: "Size"
+      license:
+        customer: "Customer"
+        features: "Features"
+        license_file: "License file"
+        machine_code: "Machine code"
+        product: "Product"
+        serial_number: "Serial number"
+        valid_until: "Valid until"
+      license_pool:
+        distributor: "Distributor"
+        product: "Product"
+        feature_name: "Feature name"
+        feature_stock: "Feature stock"
+      product:
+        downloads: "Downloads"
+        name: "Name"
+        features: "Features"
+        vendor: "Vendor"
+        version: "Version"
+      user:
+        confirmed: "Confirmed"
+        created_at: "Member since"
+        current_password: "Current password"
+        email: "Email"
+        display_name: "Name"
+        family_name: "Name"
+        member_since: "Member since"
+        new_email: "New email"
+        new_password: "New password"
+        online: 'Online'
+        old_email: "Old email was"
+        repeat_password: "Repeat password"
+        roles: "Role(s)"
+        skip_confirmation: "Skip confirmation"
+        unconfirmed_email: "Unconfirmed email"
+    errors:
+      models:
+        download:
+          file_size_must_not_exceed_storage_quota: "must not exceed storage quota"
+        license:
+          feature_must_be_non_negative_for_pooled_features: "must be non negative for features from a license pool"
+          feature_must_be_monotonically_increasing_for_pooled_features: "must be monotonically increasing for features from a license pool"
+          feature_usage_must_not_exceed_the_pool_stock_size: "usage must not exceed the license pool stock size"
+        product:
+          attributes:
+            features:
+              must_be_valid_json: "must be valid JSON"
+        user:
+          attributes:
+            current_password:
+              provide_your_current_password: "Please provide your current password"
+    models:
+      customer:
+        one: "Customer"
+        other: "Customers"
+      distributor:
+        one: "Distributor"
+        other: "Distributors"
+      download:
+        one: "Download"
+        other: "Downloads"
+      license:
+        one: "License"
+        other: "Licenses"
+      product:
+        one: "Product"
+        other: "Products"
+      user:
+        one: "User"
+        other: "Users"
+  activemodel:
+    errors:
+      models:
+        communication_call_command:
+          attributes:
+            callee_id:
+              must_be_present: "Callee must be an existing user"
+              cant_be_yourself: "You can't call yourself"
+              must_be_online: "Callee must be online"
+              must_be_available: "Callee must be available"
+  date:
+    formats:
+      license_date: "%A %d, %Y %I:%M:%S %p %z"
+  messages:
+    confirm_restoration: "Do you really want to restore this version?"
+    delete_confirmation: "Do you really want to delete this %{model}?"
+    model_was_successfully_created: "%{model} was successfully created"
+    model_was_successfully_deleted: "%{model} was successfully deleted"
+    model_was_successfully_updated: '%{model} was successfully updated'
+    version_created_at: "Created at %{at}"
+    version_created_by: "by <a href=\"%{author_path}\">%{author}</a>"
+    version: "Version %{current}"
+    version_of: "%{current} of %{all}"
+    version_is_current: "Current version"
+    version_create: "Created"
+    version_update: "Updated"
+    version_author_unknown: "System"
+  navigation:
+    call: "Call"
+    communication: "Communication"
+    customers: "Customers"
+    dashboard: "Dashboard"
+    distributors: "Distributors"
+    help: "Help"
+    home: "Home"
+    license_pools: "License pools"
+    licenses: "Licenses"
+    login: "Login"
+    my_account: "My Account"
+    new_issue: "New Issue"
+    products: "Products"
+    support: "Support"
+    users: "Users"
+  time:
+    formats:
+      license_date: "%d.%m.%Y %H:%M:%S"
+    unlimited: "∞"
+  titles:
+    are_you_sure: "Are you sure?"
+    edit_model: "%{model} bearbeiten"
+    list_model: "Liste der %{model}"
+    new_model: "%{model} erstellen"
+    show_model: "%{model} %{name}"
+  views:
+    actions: "Actions"
+    communication:
+      accept: "Accept"
+      call_was_terminated: "Call was terminated"
+      calling_callee: "Calling %{callee}..."
+      decline: "Decline"
+      hangup: "Hangup"
+      in_a_call_with: "In a call with %{name}"
+      incoming_call_from: "Incoming call from %{name}"
+    customers:
+      customer_tab: "Customer"
+      versions_tab: "Versions"
+    licenses:
+      license_tab: "License"
+      file_tab: "File"
+      versions_tab: "Versions"
+    users:
+      errors:
+        repeat_password_must_match_the_password: "must match the password"
+      change_email: "Change email"
+      change_password: "Change password"
+      edit_email: "Edit email"
+      edit_password: "Edit password"
+      edit_your_email: "Edit your email"
+      edit_your_email_description: |
+        After saving the email address, an email will be sent to your new email address.
+        Therein you will find a link that you need to follow to confirm your new email address.
+      edit_your_password: "Edit your password"
+      invalid_password_error: "Please enter a valid password. Enter at least 6 characters"
+      update_email: "Update email"
+      update_password: "Update password"
+      your_password_was_updated_successfully: "Your password was successfully updated"
+      your_password_wasnt_updated: "You haven't changed your password"

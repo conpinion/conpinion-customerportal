@@ -1,0 +1,13 @@
+<div class="table-actions">
+  <% if can? :create, License %>
+    <%= awesome_link_to t('actions.new_model', model: Download.model_name.human),
+        'plus-square', new_product_download_path(@product), class: 'btn btn-sm btn-primary' %>
+  <% end %>
+  <%= search_form_for @q, url: product_downloads_path(@product),
+      remote: true, class: 'form-inline' do |f| %>
+    <%= search_form_field f, :name, t('activerecord.attributes.download.name') %>
+    <%= search_form_buttons %>
+  <% end %>
+</div>
+
+<%= render 'downloads' %>

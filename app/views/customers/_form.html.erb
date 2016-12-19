@@ -1,0 +1,22 @@
+<%= semantic_form_for @customer, validate: true do |f| %>
+  <%= f.semantic_errors *f.object.errors.keys %>
+
+  <%= f.inputs do %>
+    <%= f.input :name, input_html: { autofocus: true } %>
+    <%= f.input :company %>
+    <%= f.input :address_street %>
+    <%= f.input :address_zip_code %>
+    <%= f.input :address_city %>
+    <%= f.input :address_country, include_blank: true %>
+    <% if current_user.has_role? :admin %>
+      <%= f.input :distributor, include_blank: false %>
+      <%= f.input :responsible %>
+    <% end %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, button_html: { class: 'btn btn-primary' } %>
+    <%= f.action :cancel, label: t('actions.cancel'),
+        url: customers_path, button_html: { class: 'btn btn-default' } %>
+  <% end %>
+<% end %>

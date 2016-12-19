@@ -1,0 +1,17 @@
+<tr>
+  <td class="actions">
+    <%= action_to t('actions.show'), 'eye', distributor, color: 'success' %>
+    <% if can? :edit, distributor %>
+      <%= action_to t('actions.edit'), 'pencil', edit_distributor_path(distributor) %>
+    <% end %>
+    <% if can? :destroy, distributor %>
+      <%= action_to t('actions.delete'), 'times', distributor,
+          color: 'danger',
+          method: :delete,
+          data: { confirm: t('messages.delete_confirmation', model: Distributor.model_name.human) } %>
+    <% end %>
+  </td>
+  <td><%= distributor.company %></td>
+  <td><%= distributor.address.short %></td>
+  <td><%= distributor.responsible&.display_name %></td>
+</tr>

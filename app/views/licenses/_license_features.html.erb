@@ -1,0 +1,17 @@
+<%= semantic_fields_for @license do |f| %>
+  <div id="license-features">
+    <h2 class="text-primary"><%= t 'activerecord.attributes.license.features' %></h2>
+    <% @license.product&.features&.each do |feature| %>
+      <% begin %>
+        <%= f.input "feature.#{feature['name']}",
+            as: feature['type'],
+            label: feature['label'] || feature['name'].gsub(/[_.]/, ' ').titleize
+        %>
+      <% rescue => e %>
+        <div class="text-danger">
+          <%= e.message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

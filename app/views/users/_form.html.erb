@@ -1,0 +1,20 @@
+<%= semantic_form_for @user, validate: true do |f| %>
+  <%= f.semantic_errors *f.object.errors.keys %>
+
+  <%= f.inputs do %>
+    <%= f.input :family_name, input_html: {autofocus: true} %>
+    <% unless @user.persisted? %>
+      <%= f.input :email %>
+      <%= f.input :skip_confirmation, as: :boolean %>
+      <%= f.input :password %>
+      <%= f.input :repeat_password %>
+    <% end %>
+    <%= f.input :roles, as: :select, collection: User.valid_roles, include_blank: false %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, button_html: {class: 'btn btn-primary'} %>
+    <%= f.action :cancel, label: t('actions.cancel'),
+        url: users_path, button_html: {class: 'btn btn-default'} %>
+  <% end %>
+<% end %>

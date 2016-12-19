@@ -1,0 +1,22 @@
+<tr>
+  <td class="actions">
+    <%= action_to t('actions.show'), 'eye', customer, color: 'success' %>
+    <%= action_to t('activerecord.models.license.other'), 'credit-card-alt', customer_licenses_path(customer),
+        color: 'info' %>
+    <% if can? :edit, customer %>
+      <%= action_to t('actions.edit'), 'pencil', edit_customer_path(customer) %>
+    <% end %>
+    <% if can? :destroy, customer %>
+      <%= action_to t('actions.delete'), 'times', customer,
+          color: 'danger',
+          method: :delete,
+          data: { confirm: t('messages.delete_confirmation', model: Customer.model_name.human) } %>
+    <% end %>
+  </td>
+  <% if current_user.has_role? :admin %>
+    <td><%= customer.distributor.company %></td>
+  <% end %>
+  <td><%= customer.company %></td>
+  <td><%= customer.name %></td>
+  <td><%= customer.address.short %></td>
+</tr>

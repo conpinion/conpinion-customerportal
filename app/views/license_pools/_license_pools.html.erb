@@ -1,0 +1,30 @@
+<div id="license-pools-table">
+  <%= paginated @license_pools %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="width-10">
+          <%= t 'views.actions' %>
+        </th>
+        <% if current_user.has_role? :admin %>
+          <th class="width-25">
+            <%= sort_link @q, :distributor, t('activerecord.attributes.license_pool.distributor') %>
+          </th>
+        <% end %>
+        <th class="<%= current_user.has_role? :admin ? 'width-25' : 'width-40' %>">
+          <%= sort_link @q, :product, t('activerecord.attributes.license_pool.product') %>
+        </th>
+        <th class="<%= current_user.has_role? :admin ? 'width-30' : 'width-40' %>">
+          <%= sort_link @q, :feature_name, t('activerecord.attributes.license_pool.feature_name') %>
+        </th>
+        <th class="width-20">
+          <%= sort_link @q, :feature_stock, t('activerecord.attributes.license_pool.feature_stock') %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @license_pools %>
+    </tbody>
+  </table>
+  <%= paginated @license_pools %>
+</div>

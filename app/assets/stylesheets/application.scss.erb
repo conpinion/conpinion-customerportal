@@ -1,0 +1,42 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ */
+@import "bootstrap-sprockets";
+@import "variables";
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "toastr_rails";
+@import "csshake-hard";
+@import "codemirror";
+@import "codemirror/themes/base16-dark";
+@import "bootstrap3-switch";
+
+html {
+}
+
+body {
+  padding: 5em 4em 2em 4em;
+}
+
+@import "custom";
+@import "tables";
+@import "toastr";
+@import "forms";
+@import "versions";
+@import "chartist-custom";
+@import "chartist";
+@import "communication-views";
+@import "bootswatch/cyborg/bootswatch";
+
+<% if Rails.env.test? %>
+@import "disable_animations";
+<% end %>

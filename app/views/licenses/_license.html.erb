@@ -1,0 +1,21 @@
+<tr>
+  <td class="actions">
+    <%= action_to t('actions.show'), 'eye', [@customer, license], color: 'success' %>
+    <%= action_to t('actions.download'), 'download', download_customer_license_path(@customer, license),
+        color: 'info' %>
+    <% if can? :edit, license %>
+      <%= action_to t('actions.edit'), 'pencil', edit_customer_license_path(@customer, license) %>
+    <% end %>
+    <% if can? :destroy, license %>
+      <%= action_to t('actions.delete'), 'times', [@customer, license],
+          color: 'danger',
+          method: :delete,
+          data: { confirm: t('messages.delete_confirmation', model: License.model_name.human) } %>
+    <% end %>
+  </td>
+  <td><%= license.product.name %></td>
+  <td><%= license.product.version %></td>
+  <td><%= license.machine_code %></td>
+  <td><%= license.serial_number %></td>
+  <td><%= format_validity_date license.valid_until %></td>
+</tr>

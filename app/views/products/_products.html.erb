@@ -1,0 +1,22 @@
+<div id="products-table">
+  <%= paginated @products %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="width-10">
+          <%= t 'views.actions' %>
+        </th>
+        <th class="width-60">
+          <%= sort_link @q, :name, t('activerecord.attributes.product.name') %>
+        </th>
+        <th class="width-30">
+          <%= sort_link @q, :version, t('activerecord.attributes.product.version') %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @products %>
+    </tbody>
+  </table>
+  <%= paginated @products %>
+</div>

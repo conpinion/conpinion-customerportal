@@ -1,0 +1,84 @@
+# This is a manifest file that'll be compiled into application.js, which will include all the files
+# listed below.
+#
+# Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
+# or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
+#
+# It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+# compiled file. JavaScript code in this file should be added after the last require_* statement.
+#
+# Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
+# about supported directives.
+#
+#= require jquery
+#= require jquery_ujs
+#= require turbolinks
+#= require bootstrap-sprockets
+#= require data-confirm-modal
+#= require toastr_rails
+#= require howler
+#= require i18n
+#= require i18n/translations
+#= require translations
+#= require js-routes
+#= require simple-webrtc
+#= require nicescroll
+#= require codemirror
+#= require codemirror/modes/javascript
+#= require bootstrap-switch
+#= require chartist
+#= require chartist-zoom-plugin
+#= require chartist-legend-plugin
+#= require_tree .
+
+navigator.vibrate = navigator.vibrate ||
+        navigator.webkitVibrate ||
+        navigator.mozVibrate ||
+        navigator.msVibrate;
+
+window.testSoundPlayed = ->
+
+window.testVibrated = ->
+
+<%
+asset_sounds =
+Dir.chdir("#{Rails.root}/app/assets/sounds/") do
+  Dir['**/*'].inject({}){|acc, img| acc[img] = image_path(img); acc}.to_json
+end
+%>
+
+$ ->
+  window.App || (window.App = {})
+  window.App.sounds = <%= asset_sounds %>
+
+  dataConfirmModal.setDefaults
+    title: I18n.t 'titles.are_you_sure'
+    commit: I18n.t 'actions.confirm'
+    cancel: I18n.t 'actions.cancel'
+    focus: 'cancel'
+
+  toastr.options =
+    'closeButton': true
+    'debug': false
+    'progressBar': true
+    'positionClass': 'toast-top-right'
+    'showDuration': '300'
+    'hideDuration': '1000'
+    'timeOut': '5000'
+    'extendedTimeOut': '1000'
+    'showEasing': 'swing'
+    'hideEasing': 'linear'
+    'showMethod': 'fadeIn'
+    'hideMethod': 'fadeOut'
+
+  $('.alert').fadeOut 5000
+
+niceScroll = null
+
+$(document).on 'turbolinks:load', ->
+  niceScroll.remove() if niceScroll
+  niceScroll = $('html').niceScroll
+    cursorcolor: '#2A9FD6'
+    cursorwidth: '0.8em'
+    cursorborder: '0'
+    cursorborderradius: '2px'

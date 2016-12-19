@@ -1,0 +1,43 @@
+<tr>
+  <td class="actions">
+    <%= action_to t('actions.show'), 'eye', user, color: 'success' %>
+    <% if can? :call, user %>
+      <%= action_to t('actions.call'), 'phone', communication_ring_path(
+          communication_call_command: {callee_id: user.id}
+      ),
+          color: 'info',
+          method: :post %>
+    <% end %>
+    <span class="dropdown">
+            <a href="#" class="dropdown-toggle btn btn-xs" data-toggle="dropdown">
+              <i class="fa fa-pencil"></i>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li><%= awesome_link_to t('actions.edit'), 'pencil',
+                  edit_user_path(user) %></li>
+              <li><%= awesome_link_to t('views.users.edit_password'), 'key',
+                  edit_password_user_path(user) %></li>
+              <li><%= awesome_link_to t('views.users.edit_email'), 'envelope',
+                  edit_email_user_path(user) %></li>
+            </ul>
+          </span>
+    <% if can? :destroy, user %>
+      <%= action_to t('actions.delete'), 'times', user,
+          color: 'danger',
+          method: :delete,
+          data: { confirm: t('messages.delete_confirmation', model: User.model_name.human) } %>
+    <% end %>
+  </td>
+  <td><%= user.display_name %></td>
+  <td><%= user.email %></td>
+  <td><%= user.roles.map(&:to_s).join ', ' %></td>
+  <td class="text-center">
+    <i class="fa <%= user.confirmed? ? 'fa-check text-success' : 'fa-remove text-danger' %>"></i>
+  </td>
+  <td class="text-center">
+    <% if user.online? %>
+      <i class="fa fa-circle text-success"></i>
+    <% end %>
+  </td>
+</tr>

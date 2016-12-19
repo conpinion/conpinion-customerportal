@@ -1,0 +1,96 @@
+$ct-text-color: $text-color !default;
+$ct-grid-color: $gray !default;
+$ct-text-size: 1em !default;
+
+$ct-series-colors: (
+    #59922b,
+    #f05b4f,
+    #f4c63d,
+    #d17905,
+    #453d3f,
+    #d70206,
+    #0544d3,
+    #6b0392,
+    #f05b4f,
+    #dda458,
+    #eacf7d,
+    #86797d,
+    #b2c326,
+    #6188e2,
+    #a748ca
+) !default;
+
+.chart-panel-body {
+  padding-top: 2em;
+  height: 75vh;
+  position: relative;
+  overflow: hidden;
+
+  .fa-spinner {
+    position: absolute;
+    top: 1em;
+    left: 50%;
+    font-size: 8em;
+  }
+}
+.ct-chart {
+  position: relative;
+}
+
+.ct-zoom-rect {
+  fill: rgba(200, 100, 100, 0.3);
+  stroke: red;
+}
+
+.ct-legend {
+  position: relative;
+  z-index: 10;
+  list-style: none;
+  top: 2em;
+  left: 3em;
+}
+
+
+.ct-legend li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 3px;
+  cursor: pointer;
+}
+
+.ct-legend li:before {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  left: 0;
+  content: '';
+  border: 3px solid transparent;
+  border-radius: 2px;
+}
+
+.ct-legend li.inactive:before {
+  background: transparent;
+}
+
+.ct-legend.ct-legend-inside {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+@each $color in $ct-series-colors {
+  $i: index($ct-series-colors, $color);
+  .ct-legend .ct-series-#{$i - 1}:before {
+    background-color: $color;
+    border-color: $color;
+  }
+}
+
+.chart-title {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 140%;
+  top: 1em;
+}

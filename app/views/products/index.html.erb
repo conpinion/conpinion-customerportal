@@ -1,0 +1,13 @@
+<div class="table-actions">
+  <% if can? :create, Product %>
+    <%= awesome_link_to t('actions.new_model', model: Product.model_name.human),
+        'plus-square', new_product_path, class: 'btn btn-sm btn-primary' %>
+  <% end %>
+  <%= search_form_for @q, remote: true, class: 'form-inline' do |f| %>
+    <%= search_form_field f, :name_cont, t('activerecord.attributes.product.name') %>
+    <%= search_form_field f, :version_cont, t('activerecord.attributes.product.version') %>
+    <%= search_form_buttons %>
+  <% end %>
+</div>
+
+<%= render 'products' %>

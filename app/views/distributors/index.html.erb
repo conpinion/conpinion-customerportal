@@ -1,0 +1,13 @@
+<div class="table-actions">
+  <% if can? :create, Distributor %>
+    <%= awesome_link_to t('actions.new_model', model: Distributor.model_name.human),
+        'plus-square', new_distributor_path, class: 'btn btn-sm btn-primary' %>
+  <% end %>
+  <%= search_form_for @q, remote: true, class: 'form-inline' do |f| %>
+    <%= search_form_field f, :company_cont, t('activerecord.attributes.distributor.company') %>
+    <%= search_form_field f, :responsible_family_name_cont, t('activerecord.attributes.distributor.responsible') %>
+    <%= search_form_buttons %>
+  <% end %>
+</div>
+
+<%= render 'distributors' %>

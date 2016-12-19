@@ -1,0 +1,16 @@
+<div class="table-actions">
+  <% if can? :create, Customer %>
+    <%= awesome_link_to t('actions.new_model', model: Customer.model_name.human),
+        'plus-square', new_customer_path, class: 'btn btn-sm btn-primary' %>
+  <% end %>
+  <%= search_form_for @q, remote: true, class: 'form-inline' do |f| %>
+    <% if current_user.has_role? :admin %>
+      <%= search_form_field f, :distributor_company_cont, t('activerecord.attributes.customer.distributor') %>
+    <% end %>
+    <%= search_form_field f, :company_cont, t('activerecord.attributes.customer.company') %>
+    <%= search_form_field f, :name_cont, t('activerecord.attributes.customer.name') %>
+    <%= search_form_buttons %>
+  <% end %>
+</div>
+
+<%= render 'customers' %>

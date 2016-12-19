@@ -1,0 +1,22 @@
+<% @graphs.each do |graph| %>
+  <div id="chart-<%= graph.distributor.id %>-<%= graph.product&.id %>"
+       class="chart-panel panel panel-default">
+    <div class="panel-heading">
+      <h2>
+        <% if graph.product %>
+          <%= graph.product.display_name %>
+        <% else %>
+          <%= graph.distributor.company %>
+        <% end %>
+        <%= awesome_link_to '', 'refresh',
+            dashboards_graph_path(distributor_id: graph.distributor, product_id: graph.product),
+            remote: true %>
+      </h2>
+    </div>
+    <div class="panel-body chart-panel-body">
+      <div class="chart-title">Feature User Count</div>
+      <div class="ct-chart ct-perfect-fourth"></div>
+      <i class="fa fa-spinner fa-pulse"></i>
+    </div>
+  </div>
+<% end %>

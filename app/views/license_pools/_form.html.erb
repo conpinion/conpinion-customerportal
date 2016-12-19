@@ -1,0 +1,16 @@
+<%= semantic_form_for @license_pool, validate: true do |f| %>
+  <%= f.semantic_errors *f.object.errors.keys %>
+
+  <%= f.inputs do %>
+    <%= f.input :distributor, input_html: {autofocus: true} %>
+    <%= f.input :product %>
+    <%= f.input :feature_name %>
+    <%= f.input :feature_stock %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, button_html: {class: 'btn btn-primary'} %>
+    <%= f.action :cancel, label: t('actions.cancel'),
+        url: license_pools_path, button_html: {class: 'btn btn-default'} %>
+  <% end %>
+<% end %>

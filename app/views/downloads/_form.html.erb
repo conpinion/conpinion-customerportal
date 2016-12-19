@@ -1,0 +1,25 @@
+<%= semantic_form_for [@product, @download], validate: true,
+    :html => { :multipart => true } do |f| %>
+  <%= f.semantic_errors *f.object.errors.keys %>
+
+  <h2 class="text-primary"><%= t 'activerecord.models.download.one' %></h2>
+  <%= f.inputs do %>
+    <%= f.input :name, input_html: { autofocus: true } %>
+    <%= f.input :description %>
+    <%= f.input :file %>
+    <p>
+      <label class="control-label">
+        <%= t 'activerecord.attributes.download.current_file' %>
+      </label>
+      <% if @download.persisted? %>
+        <%= @download.file_file_name %> (<%= number_to_human_size @download.file_file_size %>)
+      <% end %>
+    </p>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, button_html: { class: 'btn btn-primary' } %>
+    <%= f.action :cancel, label: t('actions.cancel'),
+        url: product_downloads_path(@product), button_html: { class: 'btn btn-default' } %>
+  <% end %>
+<% end %>

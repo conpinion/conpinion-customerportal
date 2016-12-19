@@ -1,0 +1,23 @@
+<div id="downlaods-table">
+  <%= paginated @downloads %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="width-10"><%= t 'views.actions' %></th>
+        <th class="width-60">
+          <%= sort_link @q, :download_name, t('activerecord.attributes.product.download') %>
+        </th>
+        <th class="width-15">
+          <%= sort_link @q, :download_file_file_size, t('activerecord.attributes.download.size') %>
+        </th>
+        <th class="width-15">
+          <%= sort_link @q, :download_count, t('activerecord.attributes.download.download_count') %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @downloads %>
+    </tbody>
+  </table>
+  <%= paginated @downloads %>
+</div>

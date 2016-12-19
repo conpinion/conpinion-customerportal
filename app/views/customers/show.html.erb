@@ -1,0 +1,58 @@
+<div class="col-md-8 col-md-offset-2">
+  <div>
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active">
+        <a href="#customer" aria-controls="customer" role="tab" data-toggle="tab">
+          <%= t 'views.customers.customer_tab' %>
+        </a>
+      </li>
+      <li role="presentation">
+        <a href="#versions" aria-controls="versions" role="tab" data-toggle="tab">
+          <%= t 'views.customers.versions_tab' %>
+        </a>
+      </li>
+    </ul>
+
+    <div class="tab-content well">
+      <div role="tabpanel" class="tab-pane active" id="customer">
+        <p>
+          <strong><%= Customer.human_attribute_name :company %>:</strong>
+          <%= @customer.company %>
+        </p>
+        <p>
+          <strong><%= t('activerecord.attributes.address.long') %>:</strong>
+          <%= @customer.address.long %>
+        </p>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="versions">
+        <% if @customer.versions.present? %>
+          <p>
+            <strong><%= t('activerecord.attributes.global.updated_at') %>:</strong>
+            <%= @customer.updated_at %>
+          </p>
+
+          <p>
+            <strong><%= t('activerecord.attributes.global.updated_by') %>:</strong>
+            <%= paper_trail_author @customer %>
+          </p>
+
+          <p>
+            <strong><%= t('activerecord.attributes.global.version_history') %>:</strong>
+          </p>
+          <ol class="version-history" reversed>
+            <%= render @customer.versions.reverse %>
+          </ol>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <% if can? :manage, @customer %>
+      <%= link_to t('actions.edit'), edit_customer_path(@customer), class: 'btn btn-primary' %>
+      <%= restore_link_to restore_customer_path(@customer,
+          version: @customer.version.index) if @customer.version %>
+    <% end %>
+    <%= link_to_back %>
+  </div>
+</div>

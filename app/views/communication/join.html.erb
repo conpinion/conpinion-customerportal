@@ -1,0 +1,36 @@
+<div class="col-md-12 communication-view">
+  <div class="communication-videos text-center">
+
+    <div class="communication-info">
+      <%= t 'views.communication.in_a_call_with', name: @hangup.peer_name %>
+    </div>
+
+    <%= semantic_form_for @hangup, url: communication_hangup_path,
+        html: { class: 'form-inline text-center' } do |f| %>
+      <% f.inputs do %>
+        <%= f.input :peer_id, as: :hidden %>
+        <%= f.actions do %>
+          <button type="submit" value="submit" class="btn btn-danger center-block">
+            <i class="glyphicon glyphicon-phone-alt"></i>
+            <span><%= t('views.communication.hangup') %></span>
+          </button>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <div id="communication-remote-videos"></div>
+    <video id="communication-local-video"></video>
+
+    <div class="communication-controls text-center">
+      <span id="mute-audio" class="fa-stack">
+        <i class="fa fa-microphone fa-stack-1x"></i>
+        <i id="mute-audio-icon" class="fa fa-ban fa-stack-2x text-error hidden"></i>
+      </span>
+      <span id="mute-video" class="fa-stack">
+        <i class="fa fa-video-camera fa-stack-1x"></i>
+        <i id="mute-video-icon" class="fa fa-ban fa-stack-2x text-error hidden"></i>
+      </span>
+    </div>
+  </div>
+
+</div>

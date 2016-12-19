@@ -1,0 +1,25 @@
+<div class="col-md-6 col-md-offset-3">
+  <div class="well">
+    <p>
+      <strong><%= Distributor.human_attribute_name :company %>:</strong>
+      <%= @distributor.company %>
+    </p>
+    <p>
+      <strong><%= t('activerecord.attributes.address.short') %>:</strong>
+      <%= @distributor.address.long %>
+    </p>
+    <p>
+      <strong><%= Distributor.human_attribute_name :responsible %>:</strong>
+      <% if @distributor.responsible %>
+        <%= link_to @distributor.responsible.display_name, @distributor.responsible %>
+      <% end %>
+    </p>
+  </div>
+
+  <div>
+    <% if can? :manage, @distributor %>
+      <%= link_to t('actions.edit'), edit_distributor_path(@distributor), class: 'btn btn-primary' %>
+    <% end %>
+    <%= link_to_back %>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+# <%= @license.customer.distributor.company %> License V2.0
+# <%= l @license.updated_at, format: :license_date %>
+id = <%= @license.customer.distributor.company %> License V2.0
+vendor = <%= @license.customer.distributor.company %>
+product = <%= @license.product.name %>
+version = <%= @license.product.version %>
+type = standard
+serial = <%= @license.serial_number %>
+name = <%= @license.customer.name %>
+company = <%= @license.customer.company %>
+validity = <%= @license.valid_until ? (@license.valid_until.strftime t('date.formats.license_date')) : '-1' %>
+machine = <%= @license.machine_code %>
+<%=
+  @license.features.map{|k,v| "#{k} = #{v}"}.join "\n"
+%>

@@ -1,0 +1,19 @@
+<%= semantic_form_for @distributor, validate: true do |f| %>
+  <%= f.semantic_errors *f.object.errors.keys %>
+
+  <%= f.inputs do %>
+    <%= f.input :company, input_html: {autofocus: true} %>
+    <%= f.input :address_street %>
+    <%= f.input :address_zip_code %>
+    <%= f.input :address_city %>
+    <%= f.input :address_country, include_blank: true %>
+    <%= f.input :responsible %>
+    <%= f.input :products, as: :check_boxes %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, button_html: {class: 'btn btn-primary'} %>
+    <%= f.action :cancel, label: t('actions.cancel'),
+        url: distributors_path, button_html: {class: 'btn btn-default'} %>
+  <% end %>
+<% end %>

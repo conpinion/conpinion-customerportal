@@ -1,0 +1,32 @@
+<div id="users-table">
+  <%= paginated @users %>
+  <table id="users-table" class="table table-striped">
+    <thead>
+      <tr>
+        <th class="width-10">
+          <%= t 'views.actions' %>
+        </th>
+        <th class="width-30">
+          <%= sort_link @q, :family_name, t('activerecord.attributes.user.display_name'),
+              default_order: :asc %>
+        </th>
+        <th class="width-40">
+          <%= sort_link @q, :email, t('activerecord.attributes.user.email') %>
+        </th>
+        <th class="width-10">
+          <%= sort_link @q, :roles_mask, t('activerecord.attributes.user.roles') %>
+        </th>
+        <th class="width-5 text-center">
+          <%= t 'activerecord.attributes.user.confirmed' %>
+        </th>
+        <th class="width-5 text-center">
+          <%= t 'activerecord.attributes.user.online' %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @users %>
+    </tbody>
+  </table>
+  <%= paginated @users %>
+</div>

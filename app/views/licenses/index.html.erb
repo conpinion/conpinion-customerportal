@@ -1,0 +1,13 @@
+<div class="table-actions">
+  <% if can? :create, License %>
+    <%= awesome_link_to t('actions.new_model', model: License.model_name.human),
+        'plus-square', new_customer_license_path(@customer), class: 'btn btn-sm btn-primary' %>
+  <% end %>
+  <%= search_form_for @q, url: customer_licenses_path(@customer),
+      remote: true, class: 'form-inline' do |f| %>
+    <%= search_form_field f, :serial_number_cont, t('activerecord.attributes.license.serial_number') %>
+    <%= search_form_buttons %>
+  <% end %>
+</div>
+
+<%= render 'licenses' %>

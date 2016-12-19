@@ -1,0 +1,7 @@
+<%
+  dsa = OpenSSL::PKey::DSA.new Figaro.env.license_signkey_priv
+  digest = OpenSSL::Digest::SHA1.digest @license_contents
+  signature = Base64.strict_encode64 dsa.syssign digest
+%>
+<%= @license_contents %># SHA1 Signature
+<%= signature %>

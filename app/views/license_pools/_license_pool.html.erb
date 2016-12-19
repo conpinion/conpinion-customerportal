@@ -1,0 +1,20 @@
+<tr>
+  <td class="actions">
+    <%= action_to t('actions.show'), 'eye', license_pool, color: 'success' %>
+    <% if can? :edit, license_pool %>
+      <%= action_to t('actions.edit'), 'pencil', edit_license_pool_path(license_pool) %>
+    <% end %>
+    <% if can? :destroy, license_pool %>
+      <%= action_to t('actions.delete'), 'times', license_pool,
+          color: 'danger',
+          method: :delete,
+          data: { confirm: t('messages.delete_confirmation', model: LicensePool.model_name.human) } %>
+    <% end %>
+  </td>
+  <% if current_user.has_role? :admin %>
+    <td><%= license_pool.distributor.company %></td>
+  <% end %>
+  <td><%= license_pool.product.display_name %></td>
+  <td><%= license_pool.feature_name.gsub(/[_.]/, ' ').titleize %></td>
+  <td><%= license_pool.feature_stock %></td>
+</tr>

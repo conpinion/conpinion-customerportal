@@ -1,0 +1,15 @@
+<div class="table-actions">
+  <% if can? :create, User %>
+    <%= awesome_link_to t('actions.new_model', model: User.model_name.human),
+        'plus-square', new_user_path, class: 'btn btn-sm btn-primary' %>
+  <% end %>
+  <%= search_form_for @q, remote: true, class: 'form-inline' do |f| %>
+    <%= search_form_field f, :family_name_cont, t('activerecord.attributes.user.display_name') %>
+    <%= search_form_field f, :email_cont, t('activerecord.attributes.user.email') %>
+    <%= search_form_buttons %>
+  <% end %>
+</div>
+
+<%= paginated @users %>
+<%= render 'users' %>
+<%= paginated @users %>

@@ -1,0 +1,6 @@
+<div class="col-md-12 communication-view text-center">
+  <% if current_user %>
+    <h1>Hello <b><%= current_user.display_name %></b>!</h1>
+    <h2>Welcome back to <%= Figaro.env.app_name %></h2>
+  <% end %>
+</div>

@@ -1,0 +1,17 @@
+<li class="version-history-item">
+  <span class="version-created-at">
+    <%= t('messages.version_created_at', at: version.created_at).html_safe %>
+  </span>
+  <span class="version-created-by">
+    <%= t('messages.version_created_by',
+        author: version.version_author ?
+            User.find(version.version_author).display_name : t('messages.version_author_unknown'),
+        author_path: version.version_author ? user_path(version.version_author) : '#')
+        .html_safe %>
+  </span>
+  <span class="version-actions">
+    <%= awesome_link_to t('actions.show'), 'eye',
+        "#{request.path_info}?version=#{version.index + 1}",
+        show_text: true %>
+  </span>
+</li>

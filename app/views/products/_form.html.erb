@@ -1,0 +1,15 @@
+<%= semantic_form_for @product, validate: true do |f| %>
+  <%= f.semantic_errors *f.object.errors.keys %>
+
+  <%= f.inputs do %>
+    <%= f.input :name, input_html: { autofocus: true } %>
+    <%= f.input :version %>
+    <%= f.input :features, as: :json %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, button_html: { class: 'btn btn-primary' } %>
+    <%= f.action :cancel, label: t('actions.cancel'),
+        url: products_path, button_html: { class: 'btn btn-default' } %>
+  <% end %>
+<% end %>

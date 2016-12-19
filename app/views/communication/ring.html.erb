@@ -1,0 +1,22 @@
+<div class="col-md-12 communication-view">
+  <%= semantic_form_for @hangup, url: communication_hangup_path,
+      html: { class: 'form-inline text-center' } do |f| %>
+    <% f.inputs do %>
+      <%= f.input :peer_id, as: :hidden %>
+      <%= f.actions do %>
+        <button type="submit" value="submit" class="btn btn-danger center-block">
+          <i class="glyphicon glyphicon-phone-alt"></i>
+          <span><%= t('views.communication.hangup') %></span>
+        </button>
+      <% end %>
+      <div class="big bg-success center-text">
+        <h1>
+          <i class="fa fa-bell shake shake-hard shake-constant"></i>
+        </h1>
+        <div id="communication-calling-callee">
+          <%= t 'views.communication.calling_callee', callee: @call.callee.display_name %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
