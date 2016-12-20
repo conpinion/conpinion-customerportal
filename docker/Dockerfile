@@ -30,7 +30,7 @@ USER rails
 
 RUN gpg --keyserver hkp://keyserver.ubuntu.com --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 RUN curl -sSL https://get.rvm.io | bash -s stable
-RUN bash -l -c "rvm install ruby-2.3.1"
+RUN bash -l -c "rvm install ruby-2.3.2"
 RUN echo "gem: --no-rdoc --no-ri" > /home/rails/.gemrc
 
 WORKDIR /app
