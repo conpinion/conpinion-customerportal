@@ -11,3 +11,4 @@
 /out
 /storage/*
 !/storage/.keep
+public/assets
