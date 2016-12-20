@@ -5,6 +5,7 @@ rails:
     - "${SSL_CER_FILE}:/etc/ssl/conpinion-customerportal.cer"
     - "${SSL_KEY_FILE}:/etc/ssl/conpinion-customerportal.key"
   environment:
+    - "APP_NAME=${APP_NAME}"
     - "RAILS_ENV=production"
     - "RAILS_SERVE_STATIC_FILES=yes"
     - "SECRET_KEY_BASE=${SECRET_KEY_BASE}"
