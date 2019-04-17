@@ -4,7 +4,7 @@
     <%= action_to t('actions.download'), 'download', download_customer_license_path(@customer, license),
         color: 'info' %>
     <% if can? :edit, license %>
-      <%= action_to t('actions.edit'), 'pencil', edit_customer_license_path(@customer, license) %>
+      <%= action_to t('actions.edit'), 'pencil-alt', edit_customer_license_path(@customer, license) %>
     <% end %>
     <% if can? :destroy, license %>
       <%= action_to t('actions.delete'), 'times', [@customer, license],

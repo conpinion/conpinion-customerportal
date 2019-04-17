@@ -2,7 +2,7 @@ module SearchHelper
   def search_form_buttons
     (button_tag '', class: 'btn btn-sm btn-warning',
       onclick: '$(this.form).clearForm();' do
-      content_tag :i, '', class: 'fa fa-remove'
+      content_tag :i, '', class: 'fa fa-times'
     end) +
       (button_tag '', class: 'btn btn-sm btn-success' do
         content_tag :i, '', class: 'fa fa-search'
@@ -14,7 +14,7 @@ module SearchHelper
       form.search_field(name, placeholder: placeholder, class: 'form-control',
         onkeyup: '$(this.form).submitFormAsync();') +
         (content_tag :span, class: 'input-group-addon' do
-          content_tag :i, '', class: 'fa fa-remove',
+          content_tag :i, '', class: 'fa fa-times',
             onclick: '$(this).parent().prev()[0].value="";$($(this).parent().prev()[0].form).submitFormAsync();' do
           end
         end)

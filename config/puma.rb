@@ -46,7 +46,11 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
 
-ssl_bind 'localhost', '3000', {
-  key: File.expand_path('../../docker/conpinion-customerportal.key', __FILE__),
-  cert: File.expand_path('../../docker/conpinion-customerportal.cer', __FILE__)
-}
+if Figaro.env.force_ssl == 'true'
+  ssl_bind 'localhost', '3000', {
+    key: File.expand_path('../../docker/conpinion-customerportal.key', __FILE__),
+    cert: File.expand_path('../../docker/conpinion-customerportal.cer', __FILE__)
+  }
+else
+  port '3000', 'localhost'
+end

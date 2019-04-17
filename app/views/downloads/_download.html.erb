@@ -4,7 +4,7 @@
     <%= action_to t('actions.download'), 'download', download_product_download_path(@product, download),
         id: :download_button, color: 'info', target:  '_blank' %>
     <% if can? :edit, download %>
-      <%= action_to t('actions.edit'), 'pencil', edit_product_download_path(@product, download) %>
+      <%= action_to t('actions.edit'), 'pencil-alt', edit_product_download_path(@product, download) %>
     <% end %>
     <% if can? :destroy, download %>
       <%= action_to t('actions.delete'), 'times', [@product, download],

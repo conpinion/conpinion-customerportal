@@ -1,10 +1,10 @@
 <tr>
   <td class="actions">
     <%= action_to t('actions.show'), 'eye', product, color: 'success' %>
-    <%= action_to t('actions.downloads'), 'cloud-download', product_downloads_path(product),
+    <%= action_to t('actions.downloads'), 'cloud-download-alt', product_downloads_path(product),
         color: 'info' %>
     <% if can? :edit, product %>
-      <%= action_to t('actions.edit'), 'pencil', edit_product_path(product) %>
+      <%= action_to t('actions.edit'), 'pencil-alt', edit_product_path(product) %>
     <% end %>
     <% if can? :destroy, product %>
       <%= action_to t('actions.delete'), 'times', product,

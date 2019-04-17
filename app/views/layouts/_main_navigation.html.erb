@@ -6,12 +6,12 @@
 
     <ul class="nav navbar-nav">
       <% if current_user&.has_role? :admin %>
-        <li><%= link_to t('navigation.dashboard'), dashboards_index_path %></a></li>
-        <li><%= link_to t('navigation.users'), users_path %></a></li>
+        <li><%= link_to t('navigation.dashboard'), dashboards_index_path %></li>
+        <li><%= link_to t('navigation.users'), users_path %></li>
         <li><%= link_to t('navigation.distributors'), distributors_path %></li>
-        <li><%= link_to t('navigation.customers'), customers_path %></a></li>
-        <li><%= link_to t('navigation.products'), products_path %></a></li>
-        <li><%= link_to t('navigation.license_pools'), license_pools_path %></a></li>
+        <li><%= link_to t('navigation.customers'), customers_path %></li>
+        <li><%= link_to t('navigation.products'), products_path %></li>
+        <li><%= link_to t('navigation.license_pools'), license_pools_path %></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <%= t('navigation.communication') %>
@@ -22,9 +22,9 @@
           </ul>
         </li>
       <% elsif current_user&.has_role? :distributor %>
-        <li><%= link_to t('navigation.dashboard'), dashboards_index_path %></a></li>
-        <li><%= link_to t('navigation.customers'), customers_path %></a></li>
-        <li><%= link_to t('navigation.products'), products_path %></a></li>
+        <li><%= link_to t('navigation.dashboard'), dashboards_index_path %></li>
+        <li><%= link_to t('navigation.customers'), customers_path %></li>
+        <li><%= link_to t('navigation.products'), products_path %></li>
         <li><%= link_to t('navigation.license_pools'), license_pools_path %></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -46,7 +46,7 @@
           <%= t('navigation.help') %>
           <span class="caret"></span>
         </a>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <ul class="dropdown-menu">
           <li class="dropdown-header">
             <span><%= Figaro.env.app_name %></span>
             <i>v<%= application_version %></i>
@@ -59,7 +59,7 @@
             <%= t('navigation.my_account') %>
             <span class="caret"></span>
           </a>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <ul class="dropdown-menu">
             <li class="dropdown-header">
               <p><%= current_user.display_name %></p>
               <% if current_user.has_role? :distributor %>
@@ -75,7 +75,7 @@
           </ul>
         </li>
       <% else %>
-        <li><%= link_to t('navigation.login'), new_user_session_path %>
+        <li><%= link_to t('navigation.login'), new_user_session_path %></li>
       <% end %>
     </ul>
   </div>

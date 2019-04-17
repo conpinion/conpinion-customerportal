@@ -2,7 +2,7 @@
   <td class="actions">
     <%= action_to t('actions.show'), 'eye', license_pool, color: 'success' %>
     <% if can? :edit, license_pool %>
-      <%= action_to t('actions.edit'), 'pencil', edit_license_pool_path(license_pool) %>
+      <%= action_to t('actions.edit'), 'pencil-alt', edit_license_pool_path(license_pool) %>
     <% end %>
     <% if can? :destroy, license_pool %>
       <%= action_to t('actions.delete'), 'times', license_pool,

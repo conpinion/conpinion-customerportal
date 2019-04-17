@@ -18,4 +18,8 @@ class ApplicationController < ActionController::Base
   def welcome
     redirect_to new_user_session_path unless current_user
   end
+
+  class << self
+    alias before_filter before_action
+  end
 end

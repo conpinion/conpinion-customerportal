@@ -14,7 +14,7 @@ module VersionsHelper
 
   def paper_trail_author object
     if object.paper_trail.originator
-      User.find(object.paper_trail_originator).display_name
+      User.find(object.paper_trail.originator).display_name
     else
       t('messages.version_author_unknown')
     end

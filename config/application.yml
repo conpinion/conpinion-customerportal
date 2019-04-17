@@ -11,7 +11,7 @@ cable_allowed_origins: |
   https://localhost:3000
   https://127.0.0.1:3000
 simplewebrtc_url: "https://sandbox.simplewebrtc.com:443/"
-force_ssl: "true"
+force_ssl: "false"
 app_name: "conpinion customerportal"
 mailer_smtp_address: "smtp.exmaple.com"
 mailer_smtp_port: "587"

@@ -33,12 +33,20 @@ case ${RAILS_ENV} in
 		rake db:migrate
 		rake db:seed
 		rake assets:precompile
-		puma --config config/puma.rb -b 'ssl://0.0.0.0:3000?key=/etc/ssl/conpinion-customerportal.key&cert=/etc/ssl/conpinion-customerportal.cer'
+		if [ "$FORCE_SSL" = "true" ]; then
+			puma --config config/puma.rb -b 'ssl://0.0.0.0:3000?key=/etc/ssl/conpinion-customerportal.key&cert=/etc/ssl/conpinion-customerportal.cer'
+		else
+			puma --config config/puma.rb
+		fi
 		;;
 	development)
 		rm -rf tmp/pids
 		rake db:migrate
 		rake db:seed
-		puma --config config/puma.rb -b 'ssl://0.0.0.0:3000?key=/etc/ssl/conpinion-customerportal.key&cert=/etc/ssl/conpinion-customerportal.cer'
+		if [ "$FORCE_SSL" = "true" ]; then
+			puma --config config/puma.rb -b 'ssl://0.0.0.0:3000?key=/etc/ssl/conpinion-customerportal.key&cert=/etc/ssl/conpinion-customerportal.cer'
+^		else
+			puma --config config/puma.rb
+		fi
 		;;
 esac

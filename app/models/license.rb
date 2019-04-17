@@ -8,7 +8,7 @@ class License < ApplicationRecord
   validates :product, presence: true
   validates :customer, presence: true
   validates :serial_number, presence: true, uniqueness: true
-  validates_uniqueness_of :machine_code, scope: [:customer, :product], if: 'machine_code.present?'
+  validates_uniqueness_of :machine_code, scope: [:customer, :product], if: :machine_code_present?
   validates :features, presence: true, allow_blank: true
   validate :counted_features_are_valid
 
@@ -79,5 +79,9 @@ class License < ApplicationRecord
         errors.add "feature.#{feature_spec['name']}", :feature_must_be_non_negative_for_pooled_features
       end
     end
+  end
+
+  def machine_code_present?
+    machine_code.present?
   end
 end

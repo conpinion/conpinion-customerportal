@@ -1,10 +1,10 @@
 <tr>
   <td class="actions">
     <%= action_to t('actions.show'), 'eye', customer, color: 'success' %>
-    <%= action_to t('activerecord.models.license.other'), 'credit-card-alt', customer_licenses_path(customer),
+    <%= action_to t('activerecord.models.license.other'), 'credit-card', customer_licenses_path(customer),
         color: 'info' %>
     <% if can? :edit, customer %>
-      <%= action_to t('actions.edit'), 'pencil', edit_customer_path(customer) %>
+      <%= action_to t('actions.edit'), 'pencil-alt', edit_customer_path(customer) %>
     <% end %>
     <% if can? :destroy, customer %>
       <%= action_to t('actions.delete'), 'times', customer,
